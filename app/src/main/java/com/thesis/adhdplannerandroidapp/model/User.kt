@@ -7,5 +7,8 @@ data class User (
     val name: String,
     val email: String,
     val password: String,
-    val phoneNumber: String
+    val phoneNumber: String,
+    val events: List<Event>,
+    val premium: Premium,
+    val confirmedEmail: Boolean
     )
