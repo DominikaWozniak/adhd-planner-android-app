@@ -30,10 +30,12 @@ public class DbManager extends SQLiteOpenHelper {
 
         sqLiteDatabase.execSQL("create table event (" +
                 "id TEXT, name TEXT, email_notification BOOLEAN, phone_notification BOOLEAN, " +
-                "sms_notification BOOLEAN, executed BOOLEAN, user_id TEXT, card_id TEXT)");
+                "sms_notification BOOLEAN, executed BOOLEAN, user_id TEXT, card_id TEXT," +
+                "foreign key(user_id) references user(id)," +
+                "foreign key(card_id) references card(id))");
 
-        sqLiteDatabase.execSQL("create table plan (" +
-                ")");
+        sqLiteDatabase.execSQL("create table daily_plan (" +
+                "id TEXT, name TEXT, type TEXT, description TEXT, event_id TEXT, )");
     }
 
     @Override
