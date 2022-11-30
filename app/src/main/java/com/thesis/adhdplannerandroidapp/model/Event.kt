@@ -10,6 +10,6 @@ data class Event (
     val smsNotification: Boolean,
     val executed: Boolean,
     val user: User,
-    val plans: List<Plan>,
+    val dailyPlans: List<DailyPlan>,
     val card: Card
 )
