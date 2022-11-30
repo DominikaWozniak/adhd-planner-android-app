@@ -2,7 +2,7 @@ package com.thesis.adhdplannerandroidapp.model
 
 import java.util.*
 
-class Plan(
+class DailyPlan (
     val id: UUID,
     val name: String,
     val type: String,
