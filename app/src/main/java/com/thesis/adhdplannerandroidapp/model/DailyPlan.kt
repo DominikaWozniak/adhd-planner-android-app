@@ -8,6 +8,6 @@ class DailyPlan (
     val type: String,
     val description: String,
     val event: Event,
-    val effectiveDate: Date,
+    val effectiveStart: Date,
     val effectiveEnd: Date
 )
