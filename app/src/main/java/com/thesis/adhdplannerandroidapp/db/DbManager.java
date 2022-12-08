@@ -2,8 +2,11 @@ package com.thesis.adhdplannerandroidapp.db;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+
+import com.thesis.adhdplannerandroidapp.model.User;
 
 public class DbManager extends SQLiteOpenHelper {
 
@@ -48,7 +51,7 @@ public class DbManager extends SQLiteOpenHelper {
 
     }
 
-    public String addNewUser(String name, String email, String password, String phoneNumber){
+    public Boolean addNewUser(String name, String email, String password, String phoneNumber){
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues cv = new ContentValues();
@@ -61,12 +64,27 @@ public class DbManager extends SQLiteOpenHelper {
 
         long res = db.insert("user", null, cv);
 
-        if (res == -1) {
-            return "Adding data to db failed";
-        } else {
-            return "Successfully added data";
-        }
+        return res != -1;
+    }
+
+    public Boolean checkUsername(String name) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery("select * from user where name=?", new String[] {name});
+        return cursor.getCount() > 0;
     }
 
 
+    public Boolean checkEmail(String email) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery("select * from user where email=? " +
+                "and password=?", new String[] {email});
+        return cursor.getCount() > 0;
+    }
+
+    public Boolean checkUsernameAndPassword(String name, String password) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery("select * from user where name=? " +
+                        "and password=?", new String[] {name, password});
+        return cursor.getCount() > 0;
+    }
 }
