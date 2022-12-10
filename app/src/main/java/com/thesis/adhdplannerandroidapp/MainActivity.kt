@@ -1,6 +1,5 @@
 package com.thesis.adhdplannerandroidapp
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -30,9 +29,8 @@ class MainActivity : AppCompatActivity() {
         returnUserObject(user)
 
         signUp.setOnClickListener {
-        val intent = Intent()
             val rePass: String = rePassword.toString()
-            validator.validateUserData(user, rePass, dataBase, this)
+            validator.validateUserPassword(user, rePass, dataBase, this)
         }
     }
 

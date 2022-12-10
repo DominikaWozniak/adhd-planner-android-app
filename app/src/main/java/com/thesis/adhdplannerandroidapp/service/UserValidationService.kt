@@ -10,8 +10,8 @@ import com.thesis.adhdplannerandroidapp.model.User
 
 class UserValidationService{
 
-    fun validateUserData(user: User, rePass: String, db: DbManager,
-                         mainActivity: MainActivity) {
+    fun validateUserPassword(user: User, rePass: String, db: DbManager,
+                             mainActivity: MainActivity) {
         if (TextUtils.isEmpty(user.name) ||
             TextUtils.isEmpty(user.password) ||
             TextUtils.isEmpty(rePass)) {
